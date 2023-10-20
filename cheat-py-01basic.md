@@ -82,36 +82,39 @@ if文は何らかの条件に応じて、実行したい処理を分岐させる
     else:
         全ての条件が偽だったときに実行するブロック
 
-　elif節は任意の数だけ繰り返すことが可能。また、elif節とelse節は省略可能である。
+elif節は任意の数だけ繰り返すことが可能。また、elif節とelse節は省略可能である。
 
+条件には比較演算子を使った値比較を記述する。
+ただし、Pythonでは、全てのオブジェクトが真または偽として評価できるので、
+直接オブジェクト（を参照する変数）を条件として記述することも可能。
 
-AWS初心者、データ保存～分析に挑戦　「S3」活用　BIツール連携も　結果は？
-　条件には比較演算子を使った値比較を記述する。ただし、Pythonでは、全てのオブジェクトが真または偽として評価できるので、直接オブジェクト（を参照する変数）を条件として記述することも可能だ。偽となるのは以下のものだ。
+偽となるのは以下のものだ。
 
-None（オブジェクトがないことを示す値）とFalse
-整数の0、浮動小数点数の0.0など、ゼロを表す数値型の値
-空文字列、空のリスト、空のタプルなど、要素を持たない反復可能オブジェクト
-　これらのオブジェクトを条件に指定すると、それは成り立たないことになる。他のオブジェクトは全て真の値として取り扱われる。
+- None（オブジェクトがないことを示す値）とFalse
+- 整数の0、浮動小数点数の0.0など、ゼロを表す数値型の値
+- 空文字列、空のリスト、空のタプルなど、要素を持たない反復可能オブジェクト
 
-　以下に例を示す。
+これらのオブジェクトを条件に指定すると、それは成り立たないことになる。他のオブジェクトは全て真の値として取り扱われる。
 
-condition1 = 1
-if condition1 == 1:  # elif節とelse節のないif文
-    print('condition is True')
+以下に例を示す。
 
-name = ""  # 空文字列を変数nameに代入
-if name:  # 空文字列は偽として扱われる
-    print(f'name: {name}')
-else:  # elif節を省略
-    print('no name')
-
-condition2 = 100
-if condition1 != 0 and condition2 == 0:  # 比較演算子と論理演算子による条件記述
-    print('some result')
-elif condition1 == 10:
-    print('another result')
-else:
-    print('final result')
+    condition1 = 1
+    if condition1 == 1:  # elif節とelse節のないif文
+        print('condition is True')
+    
+    name = ""  # 空文字列を変数nameに代入
+    if name:  # 空文字列は偽として扱われる
+        print(f'name: {name}')
+    else:  # elif節を省略
+        print('no name')
+    
+    condition2 = 100
+    if condition1 != 0 and condition2 == 0:  # 比較演算子と論理演算子による条件記述
+        print('some result')
+    elif condition1 == 10:
+        print('another result')
+    else:
+        print('final result')
 
 if文の使用例
 　なお、Pythonには他の言語に見られるswitch文がないので、条件による処理の分岐にはif文を常に使用する。
