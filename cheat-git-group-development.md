@@ -1,5 +1,5 @@
 
-# cheat sheet [group development]
+# cheat sheet [git group development]
 
 ## 前提条件
 
