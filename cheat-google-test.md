@@ -12,15 +12,14 @@ https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
 
 TEST()マクロは最も基本的なテスト処理のブロックを定義します。
 
-- 第一引数：テストケース名（TestCaseName）<br>
+- 第一引数：テストケース名（TestCaseName）  
   テストケース名は、関連する一連のテストをグループ化するための名前です。
 
-- 第二引数：テスト名（TestName）<br>
-  テスト名は、テストケース内で個々のテストを識別するための名前です。テスト名はそのテストが何を確認するものなのかを簡潔に説明するように選びます。例
+- 第二引数：テスト名（TestName）  
+  テスト名は、テストケース内で個々のテストを識別するための名前です。  
+  テスト名はそのテストが何を確認するものなのかを簡潔に説明するように選びます。
 
-これらの組み合わせは一意でなければなりません。
-    
-    TEST(TestCaseName, TestName) {
+     TEST(TestCaseName, TestName) {
         // テスト処理
         EXPECT_EQ(1, 1);
     }
