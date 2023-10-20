@@ -157,35 +157,37 @@ else節は反復可能オブジェクトの要素がなくなり、繰り返し�
 
 while文は、それに指定した条件が真である限り、処理を繰り返すのに使用する。構文を以下に示す。
 
-while 条件:
-    条件が真の間、繰り返す処理
-else:
-    条件が偽になったときに行う処理
+    while 条件:
+        条件が真の間、繰り返す処理
+    else:
+        条件が偽になったときに行う処理
 
-while文
-　if文やfor文と同様に、else節は省略可能だ。else節は条件が偽となり、繰り返し処理が終了する際に実行される。ただし、while文で行う繰り返し処理の中でbreak文が実行された場合にはelse節は実行されない（後述）。
+if文やfor文と同様に、else節は省略可能だ。else節は条件が偽となり、繰り返し処理が終了する際に実行される。
+ただし、while文で行う繰り返し処理の中でbreak文が実行された場合にはelse節は実行されない（後述）。
 
-　以下に例を示す。
+以下に例を示す。
 
-counter = 0
-while counter < 5:
-    print(counter)  # 変数counterの値が5より小さい間実行する処理
-    counter += 1
-else:
-    print('finished')  # 繰り返し処理が終わったときに実行する処理
+    # while文の使用例
+    counter = 0
+    while counter < 5:
+        print(counter)      # 変数counterの値が5より小さい間実行する処理
+        counter += 1
+    else:
+        print('finished')   # 繰り返し処理が終わったときに実行する処理
 
-while文の使用例
-break文とcontinue文
-　break文は繰り返し処理の中で、一定の条件が成立したら繰り返しを終了させるのに使用する。以下に例を示す。
 
-for num in range(5):  # ループ変数numの値は0～4に変化する
-    if num == 3:  # ループ変数numの値が3ならループを終了
-        break
-    print(num)  # このprint関数呼び出しはelse節に書いても書かなくても同じこと
-else:
-    print('finished')
+### break文とcontinue文
 
-break文の使用例
+break文は繰り返し処理の中で、一定の条件が成立したら繰り返しを終了させるのに使用する。以下に例を示す。
+
+    # break文の使用例
+    for num in range(5):  # ループ変数numの値は0～4に変化する
+        if num == 3:  # ループ変数numの値が3ならループを終了
+            break
+        print(num)  # このprint関数呼び出しはelse節に書いても書かなくても同じこと
+    else:
+        print('finished')
+
 　この例では、ループ変数numの値が3のときにbreak文が実行される。その時点で繰り返し処理が終了するので、ループ変数の値が4になることはない。また、print関数を呼び出す前にbreak文が実行されるので、この値が出力されることもないし、else節が実行されることもない。実行結果を以下に示す。
 
 実行結果
