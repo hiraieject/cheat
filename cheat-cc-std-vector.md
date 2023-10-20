@@ -1,5 +1,10 @@
 # std::vector チートシート
 
+## std::vector 概要
+std::vectorは、C++の標準テンプレートライブラリ（STL）に含まれる動的配列を提供するコンテナクラスです。
+可変サイズであり、要素の追加や削除が効率的に行えます。配列と同じように、O(1)でランダムアクセスが可能です。
+ただし、挿入と削除は位置によってはO(n)の時間がかかる場合があります。内部では連続したメモリ領域が確保されています。
+
 ## インクルードファイル
 
     #include <vector>  // for std::vector
@@ -56,6 +61,12 @@
     vec.pop_back();                     // 末尾の要素を削除
     vec.erase(vec.begin());             // 先頭の要素を削除（メモリーコピーが発生し、効率が良くない）
     vec.erase(vec.begin() + n);         // n番目の要素を削除（メモリーコピーが発生し、効率が良くない）
+
+### 全要素書き換え
+
+    #include <algorithm>  // for std::fill
+    std::fill(vec.begin(), vec.end(), n);   // 値nで全要素を書き換える
+    std::fill(vec.begin(), vec.end(), 0);   // 全要素ゼロクリア
 
 ### 全要素削除
 
