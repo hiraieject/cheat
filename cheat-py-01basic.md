@@ -98,6 +98,7 @@ elif節は任意の数だけ繰り返すことが可能。また、elif節とels
 
 以下に例を示す。
 
+    # if文の使用例
     condition1 = 1
     if condition1 == 1:             # elif節とelse節のないif文
         print('condition is True')
@@ -116,7 +117,6 @@ elif節は任意の数だけ繰り返すことが可能。また、elif節とels
     else:
         print('final result')
 
-if文の使用例
 　なお、Pythonには他の言語に見られるswitch文がないので、条件による処理の分岐にはif文を常に使用する。
 
 for文
