@@ -1,6 +1,10 @@
 
 # google test チートシート
 
+このファイルはマークダウン形式です。
+
+https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
+
 ----
 ## 基本的なテスト定義と実行
 
