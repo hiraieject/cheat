@@ -105,21 +105,28 @@
 
 #### プルリクエストを使う場合
 
-- 最新のdevelopブランチを取り込む
+最新のdevelopブランチを取り込む
 
     $ git checkout feature/[機能開発ブランチ名]
     $ git pull origin develop
 
-- GitHubでリポジトリを開く。
-- 「Pull requests」タブをクリック。
-- 「New Pull Request」ボタンをクリック。
-- 「base: develop」、「compare: feature/［機能開発ブランチ名］」と設定。
-- 変更内容を確認し、「Create Pull Request」をクリック。
-- 「Pull requests」を受けて、レビュアーがレビューを実施
-- レビューが完了したら、「Merge Pull Request」をクリック。
-- マージが完了したら、ローカルとリモートの機能開発ブランチを削除。
+GitHubでリポジトリを開く。
 
-- 最新のdevelopブランチをローカルに取り込む
+「Pull requests」タブをクリック。
+
+「New Pull Request」ボタンをクリック。
+
+「base: develop」、「compare: feature/［機能開発ブランチ名］」と設定。
+
+変更内容を確認し、「Create Pull Request」をクリック。
+
+「Pull requests」を受けて、レビュアーがレビューを実施
+
+レビューが完了したら、「Merge Pull Request」をクリック。
+
+マージが完了したら、ローカルとリモートの機能開発ブランチを削除。
+
+最新のdevelopブランチをローカルに取り込む
 
     $ cd <リポジトリディレクトリ名>
     $ git status
@@ -129,7 +136,7 @@
     $ git pull origin develop
     ## 最新の開発ブランチをリモートから取得する
 
-- 別の機能ブランチを別フォルダで開発している場合は、developブランチにマージされた内容を取り込む
+別の機能ブランチを別フォルダで開発している場合は、developブランチにマージされた内容を取り込む
 
     $ git checkout feature/[機能開発ブランチ名]
     ## カレントブランチをフィーチャーブランチに切り替える
