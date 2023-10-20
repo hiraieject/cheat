@@ -19,8 +19,27 @@ std::vectorは、C++の標準テンプレートライブラリ（STL）に含ま
     std::vector<int> vec;                   // 空の整数ベクタ
     std::vector<int> vec(10);               // 10個の0で初期化
     std::vector<int> vec(10, 1);            // 10個の1で初期化
-    std::vector<int> vec{1, 2, 3, 4, 5};    // 初期値を指定
+    std::vector<int> vec = {
+        1, 2, 3, 4, 5
+    };                                      // 初期値を指定
 
+    // 2次元配列
+    std::vector<std::vector<int>> vec2D;           // 空の2次元整数ベクタ
+    std::vector<std::vector<int>> vec2D(10, vec);  // 10行分をvecの値で初期化
+    std::vector<std::vector<int>> vec2D = {        // 初期値を指定
+        {1, 2, 3},
+        {4, 5, 6},
+    };
+    
+    // 参照による子配列へのアクセス
+    std::vector<int>& refVec = vec2D[1];
+    
+C++11以降、=はオプションなので省略可能。以下の二つは等価です。
+
+    std::vector<int> vec = {1, 2, 3};
+    std::vector<int> vec{1, 2, 3};
+
+    
 ## 要素へのアクセス
 
     vec[0] = 10;                            // 添字でアクセス

@@ -17,7 +17,25 @@ std::mapは、C++の標準テンプレートライブラリ（STL）に含まれ
 ## 宣言
 
     std::map<int, std::string> m;                           // 空のmap
-    std::map<int, std::string> m{{1, "one"}, {2, "two"}};   // 初期値を指定
+    std::map<int, std::string> m = {
+        {1, "one"},
+        {2, "two"}
+    };                                                      // 初期値を指定
+
+    // 2次元連想配列（mapの入れ子）
+    std::map<int, std::map<std::string, int>> map2D;        // 空の2次元map
+    std::map<int, std::map<std::string, int>> map2D = {     // 初期値を指定
+        {1, {{"apple", 100}, {"banana", 200}}},
+        {2, {{"apple", 150}}}
+    };
+
+    // 参照による子mapへのアクセス
+    std::map<std::string, int>& refMap = map2D[1];
+
+C++11以降、=はオプションなので省略可能。以下の二つは等価です。
+
+    std::map<int, int> vec = {{1,1}, {2,2}, {3,3}};
+    std::mao<int, int> vec{{1,1}, {2,2}, {3,3}};
 
 ## 要素へのアクセス
 
@@ -90,6 +108,10 @@ std::mapは、C++の標準テンプレートライブラリ（STL）に含まれ
     std::cout << map2D[1]["apple"] << std::endl;  // 出力: 100
     std::cout << map2D[1]["banana"] << std::endl; // 出力: 200
     std::cout << map2D[2]["apple"] << std::endl;  // 出力: 150
+
+    // mapの参照
+    std::map<std::string, int>& refMap = map2D[1];
+
 
 ## 比較オペレーターを持たない型をキーに指定する
 
