@@ -3,11 +3,11 @@
 
 ## 前提条件
 
-ブランチは master, develop, feature/［featureブランチ名］の３段階で構成する
+ブランチは master, develop, feature/［機能開発ブランチ名］の３段階で構成する
 
 - master はマスターブランチ、基本的にリリースするファイルのみ
 - develop は開発ブランチ、機能開発ブランチで作ったものをマージしていく
-- feature/feature名 は機能開発ブランチ。機能ごとに作成し、機能開発が終わったら開発ブランチにマージし、機能開発ブランチは削除する
+- feature/【機能開発ブランチ名】は機能開発ブランチ。機能ごとに作成し、機能開発が終わったら開発ブランチにマージし、機能開発ブランチは削除する
 
 ## 最初の作業(開発ブランチの作成)
 
@@ -38,32 +38,33 @@
 
 ## フィーチャー毎の作業
 
-### フィーチャー開発ブランチの立ち上げと切り替え
+### 機能開発ブランチの立ち上げと切り替え
 
     $ cd <リポジトリディレクトリ名>
-    $ git checkout -b develop
-    ## ローカルのカレントブランチを「develop」にした
+    $ git status
+    $ git checkout develop
+    ## カレントブランチを確認し、「develop」でなければ「develop」に切り替え
 
-    $ git checkout -b feature/［featureブランチ名］
-    ## ローカルカレントブランチ「develop」からフィーチャー開発ブランチ「feature/［featureブランチ名］」を作成する
+    $ git checkout -b feature/［機能開発ブランチ名］
+    ## ローカルカレントブランチ「develop」から機能開発ブランチ「feature/［機能開発ブランチ名］」を作成する
 
     $ git branch -a
       develop
-    * feature/feature-v0.3.0
+    * feature/［機能開発ブランチ名］
       master
       remotes/origin/HEAD -> origin/master
       remotes/origin/master
     ## 結果を確認
-    ## 「feature/［featureブランチ名］」ブランチが作成され、カレントもそれになっている
+    ## 「feature/［機能開発ブランチ名］」ブランチが作成され、カレントもそれになっている
 
-    $ git checkout feature/［featureブランチ名］
-    ## すでに存在しているフィーチャー開発ブランチ「feature/［featureブランチ名］」を取り出す場合は -b をつけない
+    $ git checkout feature/［機能開発ブランチ名］
+    ## すでに存在している機能開発ブランチ「feature/［機能開発ブランチ名］」を取り出す場合は -b をつけない
     
     ##
-    ## フィーチャー開発ブランチ上で開発する
+    ## 機能開発ブランチ上で開発する
     ##
 
-### フィーチャー開発ブランチへのコミット
+### 機能開発ブランチへのコミット
     
     $ git status
     $ git diff
@@ -83,10 +84,10 @@
     追加・変更したファイルをcommitする
     
     $ git branch -a
-    $ git push origin feature/［featureブランチ名］
-    ## リモート「feature/［featureブランチ名］」ブランチにpushする
+    $ git push origin feature/［機能開発ブランチ名］
+    ## リモート「feature/［機能開発ブランチ名］」ブランチにpushする
 
-### フィーチャー開発ブランチを開発ブランチへマージ
+### 機能開発ブランチを開発ブランチへマージ
 
 #### 単純にマージするだけの場合
 
@@ -96,33 +97,67 @@
     $ git pull origin develop
     ## 最新の開発ブランチをリモートから取得する
 
-    $ git merge feature/［featureブランチ名］
-    ## フィーチャー開発ブランチを開発ブランチにマージする
+    $ git merge feature/［機能開発ブランチ名］
+    ## 機能開発ブランチを開発ブランチにマージする
 
     $ git push origin develop
     ## マージした内容をリモートの開発ブランチにプッシュする
 
 #### プルリクエストを使う場合
 
+- 最新のdevelopブランチを取り込む
+    $ git checkout feature/[機能開発ブランチ名]
+    $ git pull origin develop
+
 - GitHubでリポジトリを開く。
 - 「Pull requests」タブをクリック。
 - 「New Pull Request」ボタンをクリック。
-- 「base: develop」、「compare: feature/［featureブランチ名］」と設定。
+- 「base: develop」、「compare: feature/［機能開発ブランチ名］」と設定。
 - 変更内容を確認し、「Create Pull Request」をクリック。
+- 「Pull requests」を受けて、レビュアーがレビューを実施
 - レビューが完了したら、「Merge Pull Request」をクリック。
-- マージが完了したら、ローカルとリモートのフィーチャー開発ブランチを削除。
+- マージが完了したら、ローカルとリモートの機能開発ブランチを削除。
 
-### フィーチャー開発ブランチの削除
+- 最新のdevelopブランチをローカルに取り込む
+    $ cd <リポジトリディレクトリ名>
+    $ git status
+    $ git checkout develop
+    ## カレントブランチを確認し、「develop」でなければ「develop」に切り替え
+    
+    $ git pull origin develop
+    ## 最新の開発ブランチをリモートから取得する
+
+- 別の機能ブランチを別フォルダで開発している場合は、developブランチにマージされた内容を取り込む
+    $ git checkout feature/[機能開発ブランチ名]
+    ## カレントブランチをフィーチャーブランチに切り替える
+
+    $ git merge develop
+    ## 最新の開発ブランチをフィーチャーブランチにマージする
+
+    ここまででローカルのリポジトリのみにマージ内容が反映された状態になる
+    リモートにも反映する場合は以下を実行
+    
+    $ git add .
+    $ git commit -m "developブランチから最新の変更をマージ"
+    $ git push origin feature/[機能開発ブランチ名]
+    ## ローカルリポジトリにマージした developブランチのマージ内容を、リモートリポジトリに反映
+
+### 機能開発ブランチの削除
+
+    $ cd <リポジトリディレクトリ名>
+    $ git status
+    $ git checkout develop
+    ## カレントブランチを確認し、「develop」でなければ「develop」に切り替え
 
     $ git branch -a
     ## ブランチの一覧を確認
 
-    $ git branch -d feature/［featureブランチ名］
-    ## ローカルフィーチャー開発ブランチを削除する
+    $ git branch -d feature/［機能開発ブランチ名］
+    ## ローカル機能開発ブランチを削除する
     
-    $ git push origin --delete feature/［featureブランチ名］
-    ## リモートフィーチャー開発ブランチを削除する
-    ##  対象は origin、コマンドは --deleteオプション付きのpushで、パラメーターの feature/［featureブランチ名］ブランチを削除する意味になる
+    $ git push origin --delete feature/［機能開発ブランチ名］
+    ## リモート機能開発ブランチを削除する
+    ##  対象は origin、コマンドは --deleteオプション付きのpushで、パラメーターの feature/［機能開発ブランチ名］ブランチを削除する意味になる
 
     
 ## 出典・参考
