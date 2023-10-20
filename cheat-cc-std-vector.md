@@ -8,6 +8,7 @@ std::vectorは、C++の標準テンプレートライブラリ（STL）に含ま
 ## インクルードファイル
 
     #include <vector>  // for std::vector
+    #include <algorithm>  // for std::fill, std::sort
 
 ## std:: なしで使えるようにする
 
@@ -64,7 +65,6 @@ std::vectorは、C++の標準テンプレートライブラリ（STL）に含ま
 
 ### 全要素書き換え
 
-    #include <algorithm>  // for std::fill
     std::fill(vec.begin(), vec.end(), n);   // 値nで全要素を書き換える
     std::fill(vec.begin(), vec.end(), 0);   // 全要素ゼロクリア
 
@@ -91,11 +91,11 @@ std::vectorは、C++の標準テンプレートライブラリ（STL）に含ま
 
 ## ベクタ操作
 
-    // 他のベクタを連結
-    vec.insert(vec.end(), anotherVec.begin(), anotherVec.end());
+    // 全要素をコピー
+    anotherVec = vec;
 
-    // ベクタのコピー
-    std::copy(vec.begin(), vec.end(), std::back_inserter(anotherVec));
+    // ベクタ(vec)の後ろにベクタ(addVec)の全要素を追加
+    vec.insert(vec.end(), addVec.begin(), addVec.end());
 
     // ベクタの要素をソート
     std::sort(vec.begin(), vec.end());
@@ -105,6 +105,11 @@ std::vectorは、C++の標準テンプレートライブラリ（STL）に含ま
 
     // ベクタの入れ替え
     vec1.swap(vec2);                    // 他のベクタと要素を入れ替える
+    
+## 先頭アドレスの取得
+
+    ptr = vec.data();                   // std::vectorによるメモリ再確保により、
+                                        // アドレスが変わる可能性があるので注意
 
 ## テンプレート関連
 
