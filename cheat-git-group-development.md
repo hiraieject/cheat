@@ -85,7 +85,33 @@
     $ git branch -a
     $ git push origin feature/［featureブランチ名］
     ## リモート「feature/［featureブランチ名］」ブランチにpushする
-    
+
+### フィーチャー開発ブランチを開発ブランチへマージ
+
+#### 単純にマージするだけの場合
+
+    $ git checkout develop
+    ## 開発ブランチ「develop」に切り替える
+
+    $ git pull origin develop
+    ## 最新の開発ブランチをリモートから取得する
+
+    $ git merge feature/［featureブランチ名］
+    ## フィーチャー開発ブランチを開発ブランチにマージする
+
+    $ git push origin develop
+    ## マージした内容をリモートの開発ブランチにプッシュする
+
+#### プルリクエストを使う場合
+
+- GitHubでリポジトリを開く。
+- 「Pull requests」タブをクリック。
+- 「New Pull Request」ボタンをクリック。
+- 「base: develop」、「compare: feature/［featureブランチ名］」と設定。
+- 変更内容を確認し、「Create Pull Request」をクリック。
+- レビューが完了したら、「Merge Pull Request」をクリック。
+- マージが完了したら、ローカルとリモートのフィーチャー開発ブランチを削除。
+
 ### フィーチャー開発ブランチの削除
 
     $ git branch -a
