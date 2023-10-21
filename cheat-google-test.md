@@ -252,6 +252,32 @@ gtestでは、テストの実行フローの特定のタイミングでカスタ
 | OnEnvironmentsTearDownStart() | 全てのテストケース・テスト後の環境破棄が始まる前に呼び出される。                     |
 | OnTestProgramEnd()            | テストプログラム全体が終了する際に呼び出される。                                     |
 
+### 使用例
+
+    class MyCustomListener : public ::testing::TestEventListener {
+    public:
+        void OnTestProgramStart(const ::testing::UnitTest& unit_test) override {
+            // 初期化処理など
+        }
+    
+        void OnTestIterationStart(const ::testing::UnitTest& unit_test, int iteration) override {
+            // イテレーション毎の初期化
+        }
+    
+        void OnEnvironmentsSetUpStart(const ::testing::UnitTest& unit_test) override {
+            // 環境設定の初期化
+        }
+    
+        void OnEnvironmentsTearDownStart(const ::testing::UnitTest& unit_test) override {
+            // 環境設定のクリーンアップ
+        }
+    
+        void OnTestProgramEnd(const ::testing::UnitTest& unit_test) override {
+            // 最終的なクリーンアップ処理
+        }
+        // 他のイベントも必要に応じてオーバーライド
+    };
+
 ----
 ## テスト結果とレポート
 
