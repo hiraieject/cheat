@@ -257,12 +257,10 @@ gtestでは、テストの実行フローの特定のタイミングでカスタ
 | OnTestEnd()                   | 個々のテストが終了した後に呼び出される。                                             |
 | OnTestPartResult()            | アサーションが失敗すると呼び出される。                                               |
 
-
-
 ### 使用例
 
-以下のように、::testing::TestEventListenerを継承したカスタムリスナークラスを作成し、main関数内でリスナーを追加します。
-これにより、指定したイベントが発生した際にはカスタム処理が呼び出されます。
+以下のように、::testing::TestEventListenerを継承したカスタムリスナークラスを作成し、main関数内でリスナーを追加します。  
+これにより、指定したイベントが発生した際にカスタム処理が呼び出されます。
 
     class MyCustomListener : public ::testing::TestEventListener {
     public:
@@ -295,7 +293,27 @@ gtestでは、テストの実行フローの特定のタイミングでカスタ
 ----
 ## テスト結果とレポート
 
-- RecordProperty()
+gtestでは、テストの実行結果に追加情報を提供するためのAPIがあります。
+
+- RecordProperty(): テストのXMLレポートにカスタムプロパティを追加します。
+
+### 使用例
+
+テストケースまたはテストメソッド内でRecordProperty()を呼び出すことで、XMLレポートにカスタムプロパティを追加できます。
+
+    TEST(MyTestCase, MyTest) {
+        // テストのロジック
+    
+        RecordProperty("custom_key", "custom_value");
+    }
+
+上記のコードを実行した後、生成されるXMLレポートには以下のようなカスタムプロパティが追加されます。
+
+    <testcase name="MyTest" classname="MyTestCase" ...>
+        <property name="custom_key" value="custom_value"/>
+    </testcase>
+
+この機能は、テスト結果にメタデータを追加して、後で解析やフィルタリングに使う場合などに有用です。
 
 ----
 ## その他のユーティリティ
