@@ -183,7 +183,7 @@ Google Testには、テスト結果をチェックするためのいくつかの
 
 パラメーターには任意の型が使用できるので、1度に複数のパラメーターを渡したいときは構造体や配列などを使用することができます
 
-$## INSTANTIATE_TEST_SUITE_P()
+### INSTANTIATE_TEST_SUITE_P()
 
 INSTANTIATE_TEST_SUITE_P()マクロは、TEST_P()で定義されたテストコードに対して使用するパラメータのセットを定義します。
 
