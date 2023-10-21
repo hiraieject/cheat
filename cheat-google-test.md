@@ -153,6 +153,6 @@ SetUp()やTearDown()内で生成/消去するリソースは、各テストケ�
 - SCOPED_TRACE()
 
 ---
-このチートシートはhiraieject@gmain.comによって書かれました  
+このチートシートは hiraieject@gmain.com によって書かれたパブリックドメインなドキュメントです。  
 以下でオンライン参照できます  
 https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
