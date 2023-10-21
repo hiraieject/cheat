@@ -166,9 +166,36 @@ Google Testには、テスト結果をチェックするためのいくつかの
 ----
 ## 組み合わせテスト
 
+組み合わせテストは、テストケースに対して複数のパラメータを適用して、その全ての組み合わせでテストを行います。  
+Google Testでは、TEST_P()とINSTANTIATE_TEST_SUITE_P()を使って組み合わせテストを行えます。
+
 ### TEST_P()
 
+TEST_P()マクロは、パラメータ化されたテストケースを定義するために使用されます。  
+このマクロはTEST_F()と似た構文を持ちますが、追加的にテストパラメータを使用することができます。
+
+    // 使用例
+    class FooTest : public ::testing::TestWithParam<int> {
+    };
+    TEST_P(FooTest, TestName) {
+        int param = GetParam();  // パラメータを取得
+        // テストの内容
+    }
+
 ### INSTANTIATE_TEST_SUITE_P()
+
+INSTANTIATE_TEST_SUITE_P()マクロは、TEST_P()で定義されたテストケースに対して使用するパラメータのセットを定義します。
+
+    // 使用例
+    INSTANTIATE_TEST_SUITE_P(MyCategory,
+                             FooTest,
+                             ::testing::Values(1, 2, 3));
+
+上記の設定で、FooTest::TestNameテストはパラメータとして1, 2, 3をそれぞれ受け取り、合計で3回実行されます。
+
+TEST_P()とINSTANTIATE_TEST_SUITE_P()を使うことで、複数のパラメータに対するテストを簡単に並列化できます。  
+これは、同じテストロジックを異なる条件で複数回実行したい場合に特に便利です。
+
 
 ----
 ## テストのフィルタリングとオプション
