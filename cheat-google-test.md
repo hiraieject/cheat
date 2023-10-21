@@ -166,12 +166,12 @@ Google Testには、テスト結果をチェックするためのいくつかの
 ----
 ## 組み合わせテスト
 
-組み合わせテストでは、テストケースに対してTEST_P()でテストコードを実装、INSTANTIATE_TEST_SUITE_P()でパラメータを変えて複数回のテストを実行します。  
+組み合わせテストでは、テストケースに対してTEST_P()でテストコードを実装、INSTANTIATE_TEST_SUITE_P()からパラメータを変えて複数回のテストを実行します。  
 これは、同じテストロジックを異なる条件で複数回実行したい場合に特に便利です。
 
 ### TEST_P()
 
-テストを実装するマクロです。
+テストコードを実装するマクロです。
 構文はTEST_F()と同じですが、実装するテストコードの中で、GetParam() を使ってパラメーターを取得することができます
 
     TEST_P(FooTest, TestName) {
@@ -183,7 +183,7 @@ Google Testには、テスト結果をチェックするためのいくつかの
 
 ### INSTANTIATE_TEST_SUITE_P()
 
-INSTANTIATE_TEST_SUITE_P()マクロは、TEST_P()で定義されたテストケースに対して使用するパラメータのセットを定義します。
+INSTANTIATE_TEST_SUITE_P()マクロは、TEST_P()で定義されたテストコードに対して使用するパラメータのセットを定義します。
 
     INSTANTIATE_TEST_SUITE_P(MyCategory,
                              FooTest,
@@ -198,16 +198,16 @@ INSTANTIATE_TEST_SUITE_P()マクロは、TEST_P()で定義されたテストケ�
 TEST_P() は前記クラスのメソッド扱いとなるので、クラスメンバー定義すればそれを参照することができます
 
     // パラメーター 1,2,3 で3回テストコードを実行する
-    class FooTest : public ::testing::TestWithParam<int> {  // テストケース毎にクラス定義を行なう
+    class TestCaseName : public ::testing::TestWithParam<int> {  // テストケース毎にクラス定義を行なう
     };
     
-    TEST_P(FooTest, TestName) {
+    TEST_P(TestCaseName, TestName) {
         int param = GetParam();  // パラメータを取得
         // テストコードの実装
     }
 
-    INSTANTIATE_TEST_SUITE_P(MyCategory,
-                             FooTest,
+    INSTANTIATE_TEST_SUITE_P(TestSuiteName,
+                             TestCaseName,
                              ::testing::Values(1, 2, 3));
 
 
