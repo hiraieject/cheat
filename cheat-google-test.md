@@ -223,7 +223,7 @@ gtestで作成した実行ファイルに対して、以下のオプション指
 - --gtest_filter:  テストケースまたはテストをフィルタリングして実行します。
 
         $ test_executable -gtest_filter=Test_Case1.*
-        Test_Case1で始まるすべてのテストを実行します。
+        # Test_Case1で始まるすべてのテストを実行します。
 
 - --gtest_repeat:  テストを指定回数繰り返し実行します。
 
@@ -237,21 +237,18 @@ gtestで作成した実行ファイルに対して、以下のオプション指
 
 これらのオプションは自由に組み合わせてコマンドラインで実行ファイルに直接渡すことができます。
 
-
-
-
 ----
 ## テストイベントリスナー
 
-- OnTestProgramStart()
+gtestでは、テストの実行フローの特定のタイミングでカスタム処理を挟むためのイベントリスナーが提供されています。
 
-- OnTestIterationStart()
+下記のメソッドを再定義することにより、必要な処理を実行することができます
 
-- OnEnvironmentsSetUpStart()
-
-- OnEnvironmentsTearDownStart()
-
-- OnTestProgramEnd()
+| OnTestProgramStart()          | テストプログラム全体が始まる前に呼び出される。                                       |
+| OnTestIterationStart()        | 各テストイテレーション（--gtest_repeatによる繰り返しも含む）の開始時に呼び出される。 |
+| OnEnvironmentsSetUpStart()    | 全てのテストケース・テスト前の環境設定が始まる前に呼び出される。                     |
+| OnEnvironmentsTearDownStart() | 全てのテストケース・テスト後の環境破棄が始まる前に呼び出される。                     |
+| OnTestProgramEnd()            | テストプログラム全体が終了する際に呼び出される。                                     |
 
 ----
 ## テスト結果とレポート
