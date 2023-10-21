@@ -113,38 +113,54 @@ Google Testには組み込みのmain関数が提供されており、特別な�
 ### 使い方
 組み込みのmain関数を使用するときは、テストプログラムのリンク時に、「-lgtest_main」で組み込みのmain関数をリンクします。
 
-    $ g++ your_test_file.cpp -lgtest -lgtest_main -pthread
+    $ g++ your_test_source.cpp -lgtest -lgtest_main -pthread -o your_test_executable
 
 ### main()との 使い分け
 - 独自のmain()を定義する場合：特定の初期化処理が必要、またはコマンドラインオプションでカスタマイズしたい場合。
 - 組み込みのmain関数を使用する場合：テストの実行に特別な設定や初期化が不要で、簡素な設定で済ます場合。
 
-以上のように、main()関数はテストの実行と制御に必要な要素を含んでいます。  
-使い方やカスタマイズの度合いによって、独自に定義するか組み込みのものを使用するかを選択できます。
-
-----
-## テストフィクスチャとセットアップ/ティアダウン
-
-### SetUp()
-
-    void SetUp() override {
-        // セットアップ処理
-    }
-
-### TearDown()
-
-    void TearDown() override {
-        // ティアダウン処理
-    }
+使い方やカスタマイズの度合いによって、独自に定義するか組み込みのものを使用するかを選択してください。
 
 ----
 ## アサーションとエクスペクテーション
 
+Google Testには、テスト結果をチェックするためのいくつかのマクロが用意されています。これらは大きく`ASSERT_*`と`EXPECT_*`の二種類に分類されます。
+
 ### ASSERT_*
 
-表形式で
+| マクロ名       | 説明                                         | 使用例                            |
+|----------------|----------------------------------------------|-----------------------------------|
+| `ASSERT_TRUE`  | 式が真であることを確認します                 | `ASSERT_TRUE(value);`             |
+| `ASSERT_FALSE` | 式が偽であることを確認します                 | `ASSERT_FALSE(value);`            |
+| `ASSERT_EQ`    | 二つの値が等しいことを確認します             | `ASSERT_EQ(a, b);`                |
+| `ASSERT_NE`    | 二つの値が等しくないことを確認します         | `ASSERT_NE(a, b);`                |
+| `ASSERT_LT`    | 第一の値が第二の値より小さいことを確認します | `ASSERT_LT(a, b);`                |
+| `ASSERT_LE`    | 第一の値が第二の値以下であることを確認します | `ASSERT_LE(a, b);`                |
+| `ASSERT_GT`    | 第一の値が第二の値より大きいことを確認します | `ASSERT_GT(a, b);`                |
+| `ASSERT_GE`    | 第一の値が第二の値以上であることを確認します | `ASSERT_GE(a, b);`                |
+| `ASSERT_STREQ` | 二つのC文字列が等しいことを確認します        | `ASSERT_STREQ(str1, str2);`       |
+| `ASSERT_STRNE` | 二つのC文字列が等しくないことを確認します    | `ASSERT_STRNE(str1, str2);`       |
+| `ASSERT_THROW` | 指定した例外がスローされることを確認します   | `ASSERT_THROW(func(), exc_type);` |
 
 ### EXPECT_*
+
+| マクロ名       | 説明                                         | 使用例                            |
+|----------------|----------------------------------------------|-----------------------------------|
+| `EXPECT_TRUE`  | 式が真であることを確認します                 | `EXPECT_TRUE(value);`             |
+| `EXPECT_FALSE` | 式が偽であることを確認します                 | `EXPECT_FALSE(value);`            |
+| `EXPECT_EQ`    | 二つの値が等しいことを確認します             | `EXPECT_EQ(a, b);`                |
+| `EXPECT_NE`    | 二つの値が等しくないことを確認します         | `EXPECT_NE(a, b);`                |
+| `EXPECT_LT`    | 第一の値が第二の値より小さいことを確認します | `EXPECT_LT(a, b);`                |
+| `EXPECT_LE`    | 第一の値が第二の値以下であることを確認します | `EXPECT_LE(a, b);`                |
+| `EXPECT_GT`    | 第一の値が第二の値より大きいことを確認します | `EXPECT_GT(a, b);`                |
+| `EXPECT_GE`    | 第一の値が第二の値以上であることを確認します | `EXPECT_GE(a, b);`                |
+| `EXPECT_STREQ` | 二つのC文字列が等しいことを確認します        | `EXPECT_STREQ(str1, str2);`       |
+| `EXPECT_STRNE` | 二つのC文字列が等しくないことを確認します    | `EXPECT_STRNE(str1, str2);`       |
+| `EXPECT_THROW` | 指定した例外がスローされることを確認します   | `EXPECT_THROW(func(), exc_type);` |
+
+`ASSERT_*`マクロは条件が満たされない場合、その時点でテストを終了します。  
+一方で`EXPECT_*`マクロは条件が満たされなくてもテストは継続され、その後のアサーションもチェックされます。  
+どちらを使用するかは、テストの要件に応じて選んでください。
 
 ----
 ## 組み合わせテスト
