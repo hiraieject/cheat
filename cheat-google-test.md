@@ -13,6 +13,8 @@ https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
 TEST()マクロは最も基本的なテスト処理のブロックを定義します。
 
     TEST(TestCaseName, TestName)
+    
+引数は単なる文字列ですが、クオーテーションでは囲まずに記載します
 
 - 第一引数(TestCaseName)：テストケース名  
     テストケース名は、関連する一連のテストをグループ化するための名前です。
@@ -27,8 +29,8 @@ TEST()マクロは最も基本的なテスト処理のブロックを定義し�
 
     // 使用例 (functionのテストケースで、配列で2個値を返すテストの例)
     TEST(function_test, test_no_1) {
-        std::vector return_val = function();
-        EXPECT_EQ(return_val->size(), 2);
+        std::vector<int> return_val = function();
+        EXPECT_EQ(return_val.size(), 2);
         EXPECT_EQ(return_val[0], 1);
         EXPECT_EQ(return_val[1], 1);
     }
