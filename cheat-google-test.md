@@ -217,20 +217,23 @@ TEST_P() は前記クラスのメソッド扱いとなるので、クラスメ�
 ----
 ## テストのフィルタリングとオプション
 
-gtestで作成した実行ファイルに対して、以下のオプション指定が可能です。
+gtestで作成した実行ファイルに対して、以下のオプション指定が可能です。  
 特定のテストのみを対象にしたい、またはテストの順番を確認したい場合などに便利です。
 
 - --gtest_filter:  テストケースまたはテストをフィルタリングして実行します。
 
-    $ test_executable -gtest_filter=Test_Case1.*        # Test_Case1で始まるすべてのテストを実行します。
+    $ test_executable -gtest_filter=Test_Case1.*
+     Test_Case1で始まるすべてのテストを実行します。
 
 - --gtest_repeat:  テストを指定回数繰り返し実行します。
 
-    $ test_executable --gtest_repeat=10                 # テストを10回繰り返します。
+    $ test_executable --gtest_repeat=10
+    # テストを10回繰り返します。
 
 - --gtest_shuffle:  テストの実行順序をランダムにシャッフルします。依存関係のないテスト設計を確認するために役立ちます。
 
-    $ test_executable --gtest_shuffle                    # テスト実行順序をランダムにシャッフル
+    $ test_executable --gtest_shuffle
+    # テスト実行順序をランダムにシャッフル
 
 これらのオプションは自由に組み合わせてコマンドラインで実行ファイルに直接渡すことができます。
 
