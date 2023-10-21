@@ -43,8 +43,10 @@ TEST()マクロは最も基本的なテスト処理のブロックを定義し�
 
 TEST_F()マクロは、テストフィクスチャ（テスト環境）を使用したテストを定義します。
 
+    TEST_F(TestCaseName, TestName)
+
 #### TEST()との使い分け
-- TEST(): 単体テストで、テスト間に依存関係がない、または設定/後処理が不要な場合に使用します。
+- TEST(): テスト間に依存関係がない、または設定/後処理が不要な場合に使用します  
   要は単純な１関数でテストが完結するものに使用します
 
 - TEST_F(): 複数のテストで共通の設定（SetUp）や後処理（TearDown）が必要な場合、  
@@ -54,19 +56,22 @@ TEST_F()マクロは、テストフィクスチャ（テスト環境）を使用
 
 ユーザーは、前処理と後処理を定義するため、提供されている ::testing::Test クラスを継承したクラスを作成、  
 クラス名は TestCaseName と同じ名前とし、SetUp() と TearDown() を再定義して前処理と後処理を実装します  
-TEST_F() の記載は TEST() と同じですが、TEST_F() 実行の前後で前記 SetUp() と TearDown() が実行される点が異なります
+TEST_F() の記載は TEST() と同じですが、TEST_F() 実行の前後で前記 SetUp() と TearDown() が実行される点が異なります  
+また、TEST_F() は前記クラスのメソッド扱いとなるので、クラスメンバーを参照することができます
 
     class FooTest : public ::testing::Test {
         protected:
+        int some_value;
         void SetUp() override {
             // 前処理を実装
+            some_value = 1;
         }
         void TearDown() override {
             // 後処理を実装
         }
     };
     TEST_F(FooTest, TestName) {
-        EXPECT_EQ(1, 1);
+        EXPECT_EQ(some_value, 1);
     }
 
 TEST_F()を使用することで、テストケース毎にSetUp()とTearDown()が自動的に呼ばれ、テストの独立性を保ちつつ共通の処理を簡潔に記述できます。
