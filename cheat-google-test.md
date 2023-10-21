@@ -25,9 +25,11 @@ TEST()マクロは最も基本的なテスト処理のブロックを定義し�
 テストケース名とテスト名の組み合わせは一意(重複不可)でなければなりません  
 特殊文字は使用できないため、英数とアンダースコアでの記載を推奨します  
 
-    TEST(TestCaseName, TestName) {
-        // テスト処理
-        EXPECT_EQ(1, 1);
+    // 仕様例 (functionのテストケースで、テスト番号1とした場合の例)
+    TEST(function_test, test_no_1) {
+        array = function();
+        EXPECT_EQ(array[0], 1);
+        EXPECT_EQ(array[1], 1);
     }
 
 テスト処理は、通常のC/C++言語で記載します。  
