@@ -245,14 +245,21 @@ gtestでは、テストの実行フローの特定のタイミングでカスタ
 下記のメソッドを再定義することにより、必要な処理を実行することができます
 
 | メソッド名                    | 説明                                                                                 |
-|:------------------------------|:-------------------------------------------------------------------------------------|
 | OnTestProgramStart()          | テストプログラム全体が始まる前に呼び出される。                                       |
 | OnTestIterationStart()        | 各テストイテレーション（--gtest_repeatによる繰り返しも含む）の開始時に呼び出される。 |
 | OnEnvironmentsSetUpStart()    | 全てのテストケース・テスト前の環境設定が始まる前に呼び出される。                     |
 | OnEnvironmentsTearDownStart() | 全てのテストケース・テスト後の環境破棄が始まる前に呼び出される。                     |
 | OnTestProgramEnd()            | テストプログラム全体が終了する際に呼び出される。                                     |
+| OnTestSuiteStart()            | テストスイートが開始する前に呼び出される。                                           |
+| OnTestSuiteEnd()              | テストスイートが終了した後に呼び出される。                                           |
+| OnTestStart()                 | 個々のテストが開始する前に呼び出される。                                             |
+| OnTestEnd()                   | 個々のテストが終了した後に呼び出される。                                             |
+| OnTestPartResult()            | アサーションが失敗すると呼び出される。                                               |
 
 ### 使用例
+
+以下のように、::testing::TestEventListenerを継承したカスタムリスナークラスを作成し、main関数内でリスナーを追加します。
+これにより、指定したイベントが発生した際にはカスタム処理が呼び出されます。
 
     class MyCustomListener : public ::testing::TestEventListener {
     public:
