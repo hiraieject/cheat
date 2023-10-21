@@ -129,35 +129,35 @@ Google Testには、テスト結果をチェックするためのいくつかの
 
 ### ASSERT_*
 
-| マクロ名       | 説明                                         | 使用例                            |
-|----------------|----------------------------------------------|-----------------------------------|
-| `ASSERT_TRUE`  | 式が真であることを確認します                 | `ASSERT_TRUE(value);`             |
-| `ASSERT_FALSE` | 式が偽であることを確認します                 | `ASSERT_FALSE(value);`            |
-| `ASSERT_EQ`    | 二つの値が等しいことを確認します             | `ASSERT_EQ(a, b);`                |
-| `ASSERT_NE`    | 二つの値が等しくないことを確認します         | `ASSERT_NE(a, b);`                |
-| `ASSERT_LT`    | 第一の値が第二の値より小さいことを確認します | `ASSERT_LT(a, b);`                |
-| `ASSERT_LE`    | 第一の値が第二の値以下であることを確認します | `ASSERT_LE(a, b);`                |
-| `ASSERT_GT`    | 第一の値が第二の値より大きいことを確認します | `ASSERT_GT(a, b);`                |
-| `ASSERT_GE`    | 第一の値が第二の値以上であることを確認します | `ASSERT_GE(a, b);`                |
-| `ASSERT_STREQ` | 二つの文字列が等しいことを確認します         | `ASSERT_STREQ(str1, str2);`       |
-| `ASSERT_STRNE` | 二つの文字列が等しくないことを確認します     | `ASSERT_STRNE(str1, str2);`       |
-| `ASSERT_THROW` | 指定した例外がスローされることを確認します   | `ASSERT_THROW(func(), exc_type);` |
+| マクロ名       | 説明                                                | 使用例                            |
+|----------------|-----------------------------------------------------|-----------------------------------|
+| `ASSERT_TRUE`  | 式が真であることを確認します                        | `ASSERT_TRUE(value);`             |
+| `ASSERT_FALSE` | 式が偽であることを確認します                        | `ASSERT_FALSE(value);`            |
+| `ASSERT_EQ`    | 二つの値が等しいことを確認します                    | `ASSERT_EQ(a, b);`                |
+| `ASSERT_NE`    | 二つの値が等しくないことを確認します                | `ASSERT_NE(a, b);`                |
+| `ASSERT_LT`    | 第一の値が第二の値より小さいことを確認します        | `ASSERT_LT(a, b);`                |
+| `ASSERT_LE`    | 第一の値が第二の値以下であることを確認します        | `ASSERT_LE(a, b);`                |
+| `ASSERT_GT`    | 第一の値が第二の値より大きいことを確認します        | `ASSERT_GT(a, b);`                |
+| `ASSERT_GE`    | 第一の値が第二の値以上であることを確認します        | `ASSERT_GE(a, b);`                |
+| `ASSERT_STREQ` | 二つの文字列(C言語形式)が等しいことを確認します     | `ASSERT_STREQ(str1, str2);`       |
+| `ASSERT_STRNE` | 二つの文字列(C言語形式)が等しくないことを確認します | `ASSERT_STRNE(str1, str2);`       |
+| `ASSERT_THROW` | 指定した例外がスローされることを確認します          | `ASSERT_THROW(func(), exc_type);` |
 
 ### EXPECT_*
 
-| マクロ名       | 説明                                         | 使用例                            |
-|----------------|----------------------------------------------|-----------------------------------|
-| `EXPECT_TRUE`  | 式が真であることを確認します                 | `EXPECT_TRUE(value);`             |
-| `EXPECT_FALSE` | 式が偽であることを確認します                 | `EXPECT_FALSE(value);`            |
-| `EXPECT_EQ`    | 二つの値が等しいことを確認します             | `EXPECT_EQ(a, b);`                |
-| `EXPECT_NE`    | 二つの値が等しくないことを確認します         | `EXPECT_NE(a, b);`                |
-| `EXPECT_LT`    | 第一の値が第二の値より小さいことを確認します | `EXPECT_LT(a, b);`                |
-| `EXPECT_LE`    | 第一の値が第二の値以下であることを確認します | `EXPECT_LE(a, b);`                |
-| `EXPECT_GT`    | 第一の値が第二の値より大きいことを確認します | `EXPECT_GT(a, b);`                |
-| `EXPECT_GE`    | 第一の値が第二の値以上であることを確認します | `EXPECT_GE(a, b);`                |
-| `EXPECT_STREQ` | 二つの文字列が等しいことを確認します         | `EXPECT_STREQ(str1, str2);`       |
-| `EXPECT_STRNE` | 二つの文字列が等しくないことを確認します     | `EXPECT_STRNE(str1, str2);`       |
-| `EXPECT_THROW` | 指定した例外がスローされることを確認します   | `EXPECT_THROW(func(), exc_type);` |
+| マクロ名       | 説明                                                | 使用例                            |
+|----------------|-----------------------------------------------------|-----------------------------------|
+| `EXPECT_TRUE`  | 式が真であることを確認します                        | `EXPECT_TRUE(value);`             |
+| `EXPECT_FALSE` | 式が偽であることを確認します                        | `EXPECT_FALSE(value);`            |
+| `EXPECT_EQ`    | 二つの値が等しいことを確認します                    | `EXPECT_EQ(a, b);`                |
+| `EXPECT_NE`    | 二つの値が等しくないことを確認します                | `EXPECT_NE(a, b);`                |
+| `EXPECT_LT`    | 第一の値が第二の値より小さいことを確認します        | `EXPECT_LT(a, b);`                |
+| `EXPECT_LE`    | 第一の値が第二の値以下であることを確認します        | `EXPECT_LE(a, b);`                |
+| `EXPECT_GT`    | 第一の値が第二の値より大きいことを確認します        | `EXPECT_GT(a, b);`                |
+| `EXPECT_GE`    | 第一の値が第二の値以上であることを確認します        | `EXPECT_GE(a, b);`                |
+| `EXPECT_STREQ` | 二つの文字列(C言語形式)が等しいことを確認します     | `EXPECT_STREQ(str1, str2);`       |
+| `EXPECT_STRNE` | 二つの文字列(C言語形式)が等しくないことを確認します | `EXPECT_STRNE(str1, str2);`       |
+| `EXPECT_THROW` | 指定した例外がスローされることを確認します          | `EXPECT_THROW(func(), exc_type);` |
 
 `ASSERT_*`マクロは条件が満たされない場合、その時点でテストを終了します。  
 一方で`EXPECT_*`マクロは条件が満たされなくてもテストは継続され、その後のアサーションもチェックされます。  
