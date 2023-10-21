@@ -5,7 +5,6 @@
 ----
 ## 基本的なテスト定義と実行
 
-----
 ### TEST()
 
 TEST()マクロは最も基本的なテスト処理のブロックを定義します。
@@ -199,6 +198,7 @@ TEST_P() は前記クラスのメソッド扱いとなるので、クラスメ�
 
     // パラメーター 1,2,3 で3回テストコードを実行する
     class TestCaseName : public ::testing::TestWithParam<int> {  // テストケース毎にクラス定義を行なう
+        // 中身は空でOK
     };
     
     TEST_P(TestCaseName, TestName) {
