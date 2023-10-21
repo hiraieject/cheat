@@ -352,5 +352,5 @@ SCOPED_TRACEは、特定のスコープに問題がある場合にデバッグ�
 
 
 ---
-以下でオンライン参照できます  
+以下で整形済みのドキュメントをオンライン参照できます  
 https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
