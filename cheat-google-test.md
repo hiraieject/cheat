@@ -1,10 +1,6 @@
 
 # google test チートシート
 
-このチートシートはhiraieject@gmain.comによって書かれました  
-以下でオンライン参照できます  
-https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
-
 
 ----
 ## 基本的なテスト定義と実行
@@ -155,3 +151,8 @@ SetUp()やTearDown()内で生成/消去するリソースは、各テストケ�
 - gtest_skip
 
 - SCOPED_TRACE()
+
+---
+このチートシートはhiraieject@gmain.comによって書かれました  
+以下でオンライン参照できます  
+https://github.com/hiraieject/cheat/blob/main/cheat-google-test.md
