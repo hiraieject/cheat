@@ -259,24 +259,28 @@ gtestでは、テストの実行フローの特定のタイミングでカスタ
         void OnTestProgramStart(const ::testing::UnitTest& unit_test) override {
             // 初期化処理など
         }
-    
         void OnTestIterationStart(const ::testing::UnitTest& unit_test, int iteration) override {
             // イテレーション毎の初期化
         }
-    
         void OnEnvironmentsSetUpStart(const ::testing::UnitTest& unit_test) override {
             // 環境設定の初期化
         }
-    
         void OnEnvironmentsTearDownStart(const ::testing::UnitTest& unit_test) override {
             // 環境設定のクリーンアップ
         }
-    
         void OnTestProgramEnd(const ::testing::UnitTest& unit_test) override {
             // 最終的なクリーンアップ処理
         }
         // 他のイベントも必要に応じてオーバーライド
     };
+    int main(int argc, char **argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+    
+        // リスナーの追加
+        ::testing::UnitTest::GetInstance()->listeners().Append(new MyCustomListener);
+    
+        return RUN_ALL_TESTS();
+    }
 
 ----
 ## テスト結果とレポート
