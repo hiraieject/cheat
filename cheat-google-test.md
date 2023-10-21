@@ -318,9 +318,38 @@ gtestでは、テストの実行結果に追加情報を提供するためのAPI
 ----
 ## その他のユーティリティ
 
-- gtest_skip
+gtestにはその他にもいくつか便利なユーティリティがあります。
 
-- SCOPED_TRACE()
+### GTEST_SKIP()
+
+条件によってテストをスキップするために使用します。
+
+    TEST(MyTestCase, MyTest) {
+        if (some_condition) {
+            GTEST_SKIP() << "Skipping the test due to some condition.";
+        }
+        // テストのロジック
+
+この機能を使用すると、特定の条件下でテストをスキップし、レポートにその旨を記録できます。
+
+### SCOPED_TRACE()
+
+テスト内で特定のスコープに対して追加情報（トレース）を提供します。
+
+    TEST(MyTestCase, MyTest) {
+        {
+            SCOPED_TRACE("First scope");
+            EXPECT_EQ(1, 1);  // このアサーションが失敗した場合、"First scope"がレポートに出力されます。
+        }
+        {
+            SCOPED_TRACE("Second scope");
+            EXPECT_EQ(1, 2);  // このアサーションが失敗した場合、"Second scope"がレポートに出力されます。
+        }
+    }
+    
+SCOPED_TRACEは、特定のスコープに問題がある場合にデバッグを簡単にするために役立ちます。  
+特にループや条件分岐内で複数のアサーションを行う際に有用です。
+
 
 ---
 以下でオンライン参照できます  
