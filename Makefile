@@ -1,7 +1,6 @@
-# ------------------------------------------------------ for me
-gcommit:
-	(cd ../; make gcommit)
-gpull:
-	(cd ../; make gpull)
+GITURL        = https://github.com/hiraieject/
+DIFFFOLDER    = ~/diff-folder
 
+# ------------------------------------------------ git
+-include ~/.dotfiles/.makefile.gitbase.inc
 
