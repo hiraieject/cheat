@@ -65,7 +65,7 @@ C++11以降、=はオプションなので省略可能。以下の二つは等�
         std::cout << it->first << ": " << it->second << std::endl;
     }
 
-    // 範囲forループ
+    // 範囲forループ(C++17)
     for(const auto& [key, value] : m) {
         std::cout << key << ": " << value << std::endl;
     }
